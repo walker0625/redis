@@ -1,4 +1,4 @@
-package com.minwoo.redis;
+package com.minwoo.redis.init;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
