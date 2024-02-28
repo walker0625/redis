@@ -5,7 +5,4 @@ spring:
       port: 6379
   session:
     store-type: redis
-  ## session clustering ??(httpSession? ????? ?? redis? ???? ???)
-
-server:
-  port: 8082
+  ## session clustering setting
