@@ -9,10 +9,26 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class LoginController {
 
+    /* Redis내의 session 저장 형태 예시
+        {
+            "sessionId1": {
+              "attribute1": "value1",
+              "attribute2": "value2",
+              ...
+            },
+            "sessionId2": {
+              "attribute1": "value1",
+              "attribute2": "value2",
+              ...
+            },
+            ...
+        }
+     */
+
     @GetMapping("/login")
     public String login(@RequestParam String name,
                         HttpSession httpSession) {
-        // application.yml 설정으로 해당 session 정보가 redis에 저장됨
+        // redis에 {sessionId : {name : value}} 형태로 저장됨 - application.yml 설정
         httpSession.setAttribute("name", name);
 
         return "login success";
@@ -20,7 +36,7 @@ public class LoginController {
 
     @GetMapping("/name")
     public String getName(HttpSession httpSession) {
-        // application.yml 설정으로 해당 session 정보를 redis에서 조회함
+        // redis에 {sessionId : name} 형태로 저장되어 있고
         String name = (String) httpSession.getAttribute("name");
 
         return name;

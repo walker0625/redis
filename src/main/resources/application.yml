@@ -1,7 +1,9 @@
 spring:
+  cache:
+    type: redis
+  ## session clustering setting(above SpringBoot 3.0 default - if server memory use set 'none')
   session:
     store-type: redis
   redis:
     host: localhost
     port: 6379
-  ## session clustering setting
